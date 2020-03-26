@@ -13,7 +13,7 @@
    spl_autoload_register($autoload);
 
     //Localhost 
-    define('INCLUDE_PATH','http://localhost/noticias/');
+    define('INCLUDE_PATH','http://localhost/portaldenoticias/');
     define('INCLUDE_PATH_PAINEL',INCLUDE_PATH.'painel/');
     //Conectar com o banco de dados
     define('HOST','localhost');

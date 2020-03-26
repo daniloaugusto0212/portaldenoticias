@@ -54,7 +54,8 @@
 						</select>
 					</form>
 					
-				</div><!--box-content-sidebar-->				
+				</div><!--box-content-sidebar-->
+				
 				
 			</div><!--sidebar-->
 			
