@@ -79,10 +79,7 @@
                 
                     
     ?>
-    <meta name="image" content="<?php echo INCLUDE_PATH_PAINEL ?>uploads/<?php echo $post['capa']; ?>">
-    <meta name="description" content="<?php echo $post['titulo'] ?>">
-        <h3>Criamos seu Site</h3>
-        <iframe width="100%" height="500" src="http://www.sitedan.com.br" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   
    </div><!--container-principal-->     
    <footer <?php if(isset($pagina404) && $pagina404 == true) echo 'class="fixed"';?>>
         <div class="center">
@@ -97,8 +94,6 @@
   
     <script src="<?php echo INCLUDE_PATH; ?>js/slider.js"></script>
 
-    
-    <!--<script src="<?php echo INCLUDE_PATH; ?>js/exemplo.js"></script>--> <!--script para carregar especialidades uma a uma-->
         
 </body>
 

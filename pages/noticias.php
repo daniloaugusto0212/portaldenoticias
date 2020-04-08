@@ -10,7 +10,7 @@
 <section class="header-noticias">
 	<div class="center">
 		<h2><i class="far fa-newspaper" aria-hidden="true"></i></h2>
-		<h2 style="font-size: 21px;">Acompanhe as últimas <b>notícias do portal</b></h2>
+		<h2 style="font-size: 17px;">Acompanhe as últimas <b>notícias do portal</b></h2>
 	</div><!--center-->
 </section>
 
@@ -24,18 +24,6 @@
 						<input type="submit" name="buscar" value="Pesquisar!">
 					</form>
 				</div><!--box-content-sidebar-->
-
-				<div class="box-content-sidebar">
-					<div class="center">        
-						<form class="ajax-form" method="post">
-							<h2>Cadastre-se para receber nossas notícias:</h2>
-							<input type="email" name="email"  placeholder="Email..." required/>
-							<input type="hidden" name="identificador" value="Cadastro de Email" />
-							<input type="submit" name="acao" value="Cadastrar!">
-						</form><!--banner-principal-->
-					</div><!--center-->
-				</div><!--box-content-sidebar-->
-        
 				<div class="box-content-sidebar">
 					<h3><i class="fa fa-list-ul" aria-hidden="true"></i> Selecione a categoria:</h3>
 					<form>
@@ -49,21 +37,27 @@
 								
 							?>
 								<option <?php if($value['slug'] == @$url[1]) echo 'selected'; ?> value="<?php echo $value['slug'] ?>"><?php echo $value['nome']; ?></option>
-							<?php } ?>						
+							<?php } ?>
 							
 						</select>
 					</form>
-					
+				</div><!--box-content-sidebar-->
+
+				
+				<div class="box-content-sidebar">
+					<form action="Formulario/enviar.php" class="form" method="post">
+						<h2>Receba nossas notícias!</h2>
+						<input type="email" name="email"  placeholder="Seu e-mail" required/>						
+						<input type="submit" name="acao" value="Cadastrar!">
+					</form> <!--banner-principal-->
 				</div><!--box-content-sidebar-->
 				
-				
 			</div><!--sidebar-->
-			
 
 			<div class="conteudo-portal">
 					<div class="header-conteudo-portal">
 						<?php
-							$porPagina = 5;
+							$porPagina = 8;
 							if(!isset($_POST['parametro'])){
 							if($categoria['nome'] == ''){
 								echo '<h2>Visualizando todos os Posts</h2>';
@@ -113,10 +107,10 @@
 									}
 									
 									$queryPg = ($pagina - 1) * $porPagina;
-									$query.=" ORDER BY order_id ASC LIMIT $queryPg,$porPagina";
+									$query.=" ORDER BY order_id DESC LIMIT $queryPg,$porPagina";
 								}else{
 									$pagina = 1;
-									$query.=" ORDER BY order_id ASC LIMIT 0,$porPagina";
+									$query.=" ORDER BY order_id DESC LIMIT 0,$porPagina";
 								}
 							}else{
 

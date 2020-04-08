@@ -1,0 +1,44 @@
+=========================
+Instruções:
+=========================
+
+Adicionar o script abaixo ao <header> da página do formulário:
+
+<script>
+function formatar(mascara, documento){
+  var i = documento.value.length;
+  var saida = mascara.substring(0,1);
+  var texto = mascara.substring(i)
+  
+  if (texto.substring(0,1) != saida){
+            documento.value += texto.substring(0,1);
+  }
+  
+}
+</script>
+
+=========================
+Instruções:
+=========================
+
+Campos dos formulários para personalizar:
+
+Campos que você deve usar abaixo:
+Usar type="text"
+Usar OnKeypress=""
+maxlength=""
+
+Data:
+<input type="text" name="data" maxlength="10" OnKeyPress="formatar('##/##/####', this)" >
+
+Tel:
+<input type="text" name="tel" maxlength="12" OnKeyPress="formatar('##-####-####', this)" >
+
+Cep:
+<input type="text" name="cep" maxlength="9" OnKeyPress="formatar('#####-###', this)" >
+
+CPF:
+<input type="text" name="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" >
+
+Hora:
+<input type="text" name="hora" maxlength="5" OnKeyPress="formatar('##:##', this)" >

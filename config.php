@@ -19,7 +19,7 @@
     define('HOST','localhost');
     define('USER','root');
     define('PASSWORD','');
-    define('DATABASE','portal_noticias');
+    define('DATABASE','u155647215_noticias');
 
     
 

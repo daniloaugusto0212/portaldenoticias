@@ -201,7 +201,6 @@ section.erro-404 a{
     color: #444;
 }
 
-
 .contato-container textarea{
     padding: 8px;
     margin: 8px 0;
@@ -304,15 +303,6 @@ section.container-portal{
     padding-left: 8px;
     margin: 10px 0;
 }
-.box-content-sidebar input[type=email]{
-    width: 100%;
-    height: 40px;
-    border: 1px solid rgb(220,220,220);
-    padding-left: 8px;
-    margin: 10px 0;
-
-}
-
 .box-content-sidebar input[type=submit]{
     cursor: pointer;
     background: #E44001;
@@ -325,10 +315,15 @@ section.container-portal{
 
 }
 
-.autor-box-portal{
-    margin-top: 10px;
-    text-align: center;
+.box-content-sidebar input[type=email]{
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgb(220,220,220);
+    padding-left: 8px;
+    margin: 10px 0;
+
 }
+
 
 
 .conteudo-portal{

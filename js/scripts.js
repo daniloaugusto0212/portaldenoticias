@@ -25,14 +25,14 @@ $(function(){
 
         if (listaMenu.is(':hidden') == true){           
             var icone = $('.botao-menu-mobile').find('i');
-            icone.removeClass('fas fa-bars');
-            icone.addClass('fas fa-times');
+            icone.removeClass('fa-arrow-alt-circle-down');
+            icone.addClass('fa-arrow-alt-circle-up');
             listaMenu.slideToggle();
         }
         else{   
             var icone = $('.botao-menu-mobile').find('i');
-            icone.removeClass('fas fa-times');
-            icone.addClass('fas fa-bars');                     
+            icone.removeClass('fa-arrow-alt-circle-up');
+            icone.addClass('fa-arrow-alt-circle-down');                     
             listaMenu.slideToggle();
    
         }       
