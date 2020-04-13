@@ -51,6 +51,41 @@
 						<input type="submit" name="acao" value="Cadastrar!">
 					</form> <!--banner-principal-->
 				</div><!--box-content-sidebar-->
+
+				<div class="box-content-sidebar">
+					<!-- Page Content -->
+					<div class="container">
+
+					<!-- Page Heading -->
+					<h1 class="my-4">Ganhe dinheiro em casa!</h1>
+
+					<div class="row">
+					<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+						<div class="card h-100">
+							<a href="https://vm.tiktok.com/nt9h5K/"><img class="card-img-top" src="<?php echo INCLUDE_PATH ?>/images/tik-tok.jpg" alt=""></a>
+							<a href="https://vm.tiktok.com/nt9h5K/">
+							<div class="card-body">
+								<h4 class="card-title">TIK-TOK</h4>
+								<p class="card-text">Ganhe dinheiro assistindo vídeos, sem investir nada. Saque liberado todos os dias.Totalmente gratuito e de CONFIANÇA. Interessados só clicar no link, baixar o app utilizar o seguinte código <b>239576441</b>, seguindo as intruções abaixo. </p>
+								<h4>Baixa o TIKTOK 📲Play store
+								<p>💢 Quando abrir o app vai na opção <b>EU</b></p> 
+								<p>👤 Faça o cadastro</p>
+								<p>💢 Clique na moedinha</p> 
+								<p>🟠 Adiciona o código 239576441</h4>
+							</div></a>
+						</div>
+					</div>
+					
+					
+					
+					</div>
+					<!-- /.row -->
+
+
+
+					</div>
+					<!-- /.container -->
+				</div><!--box-content-sidebar-->
 				
 			</div><!--sidebar-->
 

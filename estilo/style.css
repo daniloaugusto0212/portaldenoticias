@@ -453,6 +453,17 @@ section.noticia-single img{
     margin-right: auto
 }
 
+.card a{
+    text-decoration: none;
+    color: #151C48;
+    font-weight: 500;
+}
+
+img.card-img-top{
+    width: 100%;
+    max-height: 200px;
+}
+
 @media screen and (max-width: 768px){
     section.noticia-single img{
         max-width:100%;
