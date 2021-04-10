@@ -1,25 +1,28 @@
 <?php
-        $hr = date("H");
-        
+include('../config.php');
+$hr = date(" H ");
 
-        if($hr >= 12 && $hr<18) {
+if ($hr >= 12 && $hr < 18) {
 
-            $resp = "Boa tarde";}
+    $resp = "Boa tarde";
+} elseif ($hr >= 0 && $hr < 12) {
+    $resp = "Bom dia";
+} else {
+    $resp = "Boa noite";
+}
 
-            else if ($hr >= 0 && $hr <12 ){
+define('MAIL_SENDER', 'danilo@abrircnpjmei.com.br');
+$selectMail = Painel::select("pass_mail", "mail = ?", array(MAIL_SENDER));
+define('PASSWORD_MAIL', $selectMail['password']);
+define('SERVER_MAIL', 'smtp.hostinger.com.br');
 
-            $resp = "Bom dia";}
-
-            else {
-
-            $resp = "Boa noite";
-        }
 // Inclui o arquivo class.phpmailer.php localizado na pasta phpmailer
 
 require("class.phpmailer.php");
 
 
 $email = $_POST['email'];
+$language = $_POST['language'] == 'pt-BR';
 
 $bodyContent = "
 <table style='background-color: #4D7F62;' width='744' border='0' align='center' cellpadding='0' cellspacing='0'>
@@ -138,13 +141,13 @@ $mail = new PHPMailer();
 
 $mail->IsSMTP(); // Define que a mensagem será SMTP
 
-$mail->Host = "smtp.hostinger.com.br"; // Endereço do servidor SMTP (caso queira utilizar a autenticação, utilize o host smtp.seudomínio.com.br)
+$mail->Host = SERVER_MAIL; // Endereço do servidor SMTP (caso queira utilizar a autenticação, utilize o host smtp.seudomínio.com.br)
 
 $mail->SMTPAuth = true; // Usar autenticação SMTP (obrigatório para smtp.seudomínio.com.br)
 
-$mail->Username = 'contato@sitedan.com.br'; // Usuário do servidor SMTP (endereço de email)
+$mail->Username = MAIL_SENDER; // Usuário do servidor SMTP (endereço de email)
 
-$mail->Password = '681015'; // Senha do servidor SMTP (senha do email usado)
+$mail->Password = PASSWORD_MAIL; // Senha do servidor SMTP (senha do email usado)
 
 $mail ->CharSet = "UTF-8";
 
@@ -154,11 +157,11 @@ $mail ->CharSet = "UTF-8";
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-$mail->From = "contato@sitedan.com.br"; // Seu e-mail
+$mail->From = MAIL_SENDER; // Seu e-mail
 
-$mail->Sender = "contato@sitedan.com.br"; // Seu e-mail
+$mail->Sender = MAIL_SENDER; // Seu e-mail
 
-$mail->FromName = "Dansol"; // Seu nome
+$mail->FromName = "Danilo Augusto"; // Seu nome
 
 $mail->ClearReplyTos();
 $mail->addReplyTo($email, $name);
@@ -193,7 +196,7 @@ $mail->IsHTML(true); // Define que o e-mail será enviado como HTML
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-$mail->Subject  = "Formulário do Site"; // Assunto da mensagem
+$mail->Subject = "Receber Noticias"; // Assunto da mensagem
 
 
 /*
@@ -218,53 +221,61 @@ $mail->AltBody =$bodyContent;
 
  
 
-// Envia o e-mail
+if ($language) {
+    // Envia o e-mail
+    $enviado = $mail->Send();
 
-$enviado = $mail->Send();
+    
 
- 
+    // Limpa os destinatários e os anexos
 
-// Limpa os destinatários e os anexos
+    $mail->ClearAllRecipients();
 
-$mail->ClearAllRecipients();
+    $mail->ClearAttachments();
 
-$mail->ClearAttachments();
+    
 
- 
+    // // Exibe uma mensagem de resultado
 
-// // Exibe uma mensagem de resultado
+    // if ($enviado) {
 
-// if ($enviado) {
+    // echo "E-mail enviado com sucesso!";
 
-// echo "E-mail enviado com sucesso!";
+    // } else {
 
-// } else {
+    // echo "Não foi possível enviar o e-mail.
 
-// echo "Não foi possível enviar o e-mail.
+    
 
- 
+    // ";
 
-// ";
+    // echo "Informações do erro: 
 
-// echo "Informações do erro: 
+    // " . $mail->ErrorInfo;
 
-// " . $mail->ErrorInfo;
+    // }
 
-// }
-
-if ($enviado) { ?>
-    <script language="javascript" type="text/javascript">
-        alert('Mensagem enviada com sucesso');
-        window.location = '../';
-    </script>
-<?php
-}
-else { ?>
-    <script language="javascript" type="text/javascript">
-        alert('Campos incorretos, mensagem não enviada.');
-        window.location = '../';
-    </script>
-<?php
+    if ($enviado) { ?>
+        <script language="javascript" type="text/javascript">
+            alert('Mensagem enviada com sucesso');
+            window.location = '../';
+        </script>
+    <?php
+    }
+    else { ?>
+        <script language="javascript" type="text/javascript">
+            alert('Campos incorretos, mensagem não enviada.');
+            window.location = '../';
+        </script>
+    <?php
+    }
+} else {
+    ?>
+        <script language="javascript" type="text/javascript">
+            alert('Erro! Devido a grande quantidade de SPAN, está bloqueado o envio de formulário de fora do Brasil. Para entrar em contato, use o botão de WhatsApp.');
+            window.location = '../';
+        </script>
+    <?php
 }
 ?>
 

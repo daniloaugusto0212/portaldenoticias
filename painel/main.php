@@ -19,12 +19,12 @@
     <div class="menu-wraper">
         <div class="box-usuario">
         <?php
-            if($_SESSION['img'] == ''){              
-        ?>
-            <div class="avatar-usuario">
-                <i class="fa fa-user"></i>
-            </div><!--avatar-usuario-->
-        <?php }else{ ?>
+            if ($_SESSION['img'] == '') {              
+                ?>
+                <div class="avatar-usuario">
+                    <i class="fa fa-user"></i>
+                </div><!--avatar-usuario-->
+            <?php } else { ?>
             <div class="imagem-usuario">
             <img src="<?php echo INCLUDE_PATH_PAINEL ?>uploads/<?php echo $_SESSION['img'];?>">
         <?php } ?>
@@ -38,6 +38,7 @@
         <h2>Administração do Painel</h2>
         <a <?php selecionadoMenu('editar-usuario'); ?> href="<?php echo INCLUDE_PATH_PAINEL?>editar-usuario">Editar Usuário</a>
         <a <?php selecionadoMenu('adicionar-usuario'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH_PAINEL?>adicionar-usuario">Adicionar Usuário</a>
+        <a <?php selecionadoMenu('limpar-visitas'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH_PAINEL?>limpar-visitas">Limpar Visitas</a>
         <h2>Configuração Geral</h2>
         <a <?php selecionadoMenu('editar-site'); ?> href="<?php echo INCLUDE_PATH_PAINEL?>editar-site">Editar Site</a>
         <h2>Gestão de Notícias</h2>
@@ -56,7 +57,9 @@
         </div><!--menu-btn-->
        
         <div class="logout">
-        <a <?php if (@$_GET['url'] == ''){?>style="background: #60727a;padding:15px;" <?php } ?> href="<?php echo INCLUDE_PATH_PAINEL ?>"><i class="fas fa-home"></i><span>Página Inicial </span>  </a>
+        <a <?php if (@$_GET['url'] == '') {?>style="background: #60727a;padding:15px;" <?php } ?> href="<?php echo INCLUDE_PATH_PAINEL ?>"><i class="fas fa-home"></i><span>Página Inicial </span>  </a>
+
+            <a href="<?= INCLUDE_PATH ?>"><i class="fas fa-globe"></i><span> Site </span></a>
             
             <a href="<?php echo INCLUDE_PATH_PAINEL ?>?logout"><span>Sair </span><i class="fas fa-sign-out-alt"></i></a>
         </div><!--logout-->

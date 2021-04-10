@@ -1,15 +1,28 @@
 <?php
-	$usuariosOnline = Painel::listarUsuariosOnline();
 
-	$pegarVisitasTotais = MySql::conectar()->prepare("SELECT * FROM `tb_admin.visitas`");
-	$pegarVisitasTotais->execute();
+$usuariosOnline = Painel::listarUsuariosOnline();
 
-	$pegarVisitasTotais = $pegarVisitasTotais->rowCount();
+/*Visitas que estão na tabela que armazena os dados dos visitantes*/
+$pegarVisitasTotais = MySql::conectar()->prepare("SELECT * FROM `tb_admin.visitas`");
+$pegarVisitasTotais->execute();
+$pegarVisitasTotais = $pegarVisitasTotais->rowCount();
 
-	$pegarVisitasHoje = MySql::conectar()->prepare("SELECT * FROM `tb_admin.visitas` WHERE dia = ?");
-	$pegarVisitasHoje->execute(array(date('Y-m-d')));
+/*Visitas da tabelas que só armazena o total de visitas quando a tabelas tb_admin.visitas é limpa*/
+$totalVisitas = MySql::conectar()->prepare("SELECT * FROM `total_visitas`");
+$totalVisitas->execute();
+if ($totalVisitas->rowCount() != 0) {
+    $totalVisitas = $totalVisitas->fetch()['total'];
+} else {
+    $totalVisitas = 0;
+}
 
-	$pegarVisitasHoje = $pegarVisitasHoje->rowCount();
+/*Total de visitas que estão nas duas tabelas(Total real de visitas no site)*/
+$visitasTotais = $pegarVisitasTotais + $totalVisitas;
+
+$pegarVisitasHoje = MySql::conectar()->prepare("SELECT * FROM `tb_admin.visitas` WHERE dia = ?");
+$pegarVisitasHoje->execute(array(date('Y-m-d')));
+
+$pegarVisitasHoje = $pegarVisitasHoje->rowCount();
 
 
 ?>
@@ -26,7 +39,7 @@
 			<div class="box-metrica-single">
 				<div class="box-metrica-wraper">
 					<h2>Total de Visitas</h2>
-					<p><?php echo $pegarVisitasTotais; ?></p>
+					<p><?php echo $visitasTotais; ?></p>
 				</div><!--box-metrica-wraper-->
 			</div><!--box-metrica-single-->
 			<div class="box-metrica-single">

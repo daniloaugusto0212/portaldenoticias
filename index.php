@@ -1,103 +1,79 @@
-<?php include('config.php'); ?>
-<?php Site::updateUsuarioOnline(); ?>
-<?php Site::contador(); ?>
-<?php
-    $infoSite = MySql::conectar()->prepare("SELECT * FROM `tb_site.config`");
-    $infoSite->execute();
-    $infoSite = $infoSite->fetch();
+<?php include('config.php');
+Site::updateUsuarioOnline();
+Site::contador();
+$infoSite = MySql::conectar()->prepare("SELECT * FROM `tb_site.config`");
+$infoSite->execute();
+$infoSite = $infoSite->fetch();
+
+$url = @explode('/', $_GET['url']);
+$keywords = [];
+if ($url[0] == '') {
+    //Estamos na Home
+    $active = 'class="menu-active"';
+    $keywords[0] = "noticias,portal de noticias, news, Últimas notícias do Brasil e do mundo, sobre política, economia, emprego, educação, saúde, meio ambiente, tecnologia, ciência, cultura e carros.";
+} elseif ($url[1] != '' && (!isset($url[2]))) {
+    //Estamos em categorias
+    $active = '';
+    //Selecionar o id da categoria
+    $infoCategoria = MySql::conectar()->prepare("SELECT id FROM `tb_site.categorias` WHERE slug = ? ");
+    $infoCategoria->execute(array($url[1]));
+    $infoCategoria = $infoCategoria->fetch();
+    $idCategoria = $infoCategoria['id'];
+
+    //Selecionar 10 t´titulos de notícias da categoria
+    $infoTituloNoticia = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE categoria_id = ? LIMIT 10");
+    $infoTituloNoticia->execute(array($idCategoria));
+    $infoTituloNoticia = $infoTituloNoticia->fetchAll();
+    // print_r($infoTituloNoticia[3]['titulo']);
+    $i = 0;
+    foreach ($infoTituloNoticia as $key => $value) {
+        $keywords[$i] = $value['titulo'];
+        $i++;
+    }
+} elseif (isset($url[2])) {
+    $active = 'class="menu-active"';
+} else {
+    //Estamos na notícia
+    $infoNoticia = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE slug = ?");
+    $infoNoticia->execute(array($url[2]));
+    $infoNoticia = $infoNoticia->fetch();
+    $keywords[0] = $infoNoticia['titulo'];
+}
+$c = count($keywords);
+
+require 'partials/header.php';
+
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160703328-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-160703328-2');
-</script>
-    <title><?php echo $infoSite['titulo']; ?></title>
-    <link href="<?php echo INCLUDE_PATH; ?>estilo/css/all.css" rel="stylesheet"> <!--load all styles -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700&display=swap" rel="stylesheet">
-    <link href="<?php echo INCLUDE_PATH; ?>estilo/style.css" rel="stylesheet"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Danilo Augusto" >
-    <meta name="keywords" content="noticias,portal de noticias, news, Últimas notícias do Brasil e do mundo, sobre política, economia, emprego, educação, saúde, meio ambiente, tecnologia, ciência, cultura e carros. "> <!--palavras chaves do site, colocar até 10-->
-    <meta name="description" content="Notícias Now - Portal de notícias." > 
-    
-       
-    <link rel="icon" href="<?php echo INCLUDE_PATH; ?>favicon.ico" type="image/x-icon"/>    
-    <meta charset="UTF-8">   
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
-</head>
-<body>  
-    <header>        
-        <div class="center">            
-            <div class="logo left"><a href="<?php echo INCLUDE_PATH; ?>" ><img src="<?php echo INCLUDE_PATH; ?>images/logo.png" alt="logo"></a></div><!--logo-->
-            <nav class="desktop right">            
-                <ul>
-                <li><a title="home" href="<?php echo INCLUDE_PATH; ?>noticias/">home</a></li>
-                <?php
-                $categorias = MySql::conectar()->prepare("SELECT * FROM `tb_site.categorias` ORDER BY order_id ASC");
-                $categorias->execute();
-                $categorias = $categorias->fetchAll();
-                foreach ($categorias as $key => $value) {
-                
-            ?>
-                <li><a title="<php? echo $value['nome']; ?>" href="<?php echo INCLUDE_PATH; ?>noticias/<?php echo $value['nome']; ?>"><?php echo $value['nome']; ?></a></li>     
-                <?php } ?>
-                </ul> 
-                         
-            </nav>
-            <nav class="mobile right">
-                <div class="botao-menu-mobile"><i class="fas fa-bars"></i></div>
-                <ul>
-                <li><a title="home" href="<?php echo INCLUDE_PATH; ?>noticias/">Home</a></li>
-                <?php
-                $categorias = MySql::conectar()->prepare("SELECT * FROM `tb_site.categorias` ORDER BY order_id ASC");
-                $categorias->execute();
-                $categorias = $categorias->fetchAll();
-                foreach ($categorias as $key => $value) {
-                
-            ?>
-                <li><a title="<php? echo $value['nome']; ?>" href="<?php echo INCLUDE_PATH; ?>noticias/<?php echo $value['nome']; ?>"><?php echo $value['nome']; ?></a></li>     
-                <?php } ?>                
-                </ul>
-                   
-            </nav>
-        <div class='clear'></div>
-        </div><!--center-->
 
-    </header>
 
     <div class="container-principal">
-        <?php                        
-            include('pages/noticias.php');
-                
-                    
-    ?>
-   
-   </div><!--container-principal-->     
-   <footer <?php if(isset($pagina404) && $pagina404 == true) echo 'class="fixed"';?>>
-        <div class="center">
-            <p>Todo os direitos reservados</p>
-        </div><!--center-->
-    </footer >
-    <script data-ad-client="ca-pub-4705170629656649" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script src="<?php echo INCLUDE_PATH; ?>js/jquery.js"></script>
-    <script src="<?php echo INCLUDE_PATH; ?>js/constants.js"></script>
-    
-    <script src="<?php echo INCLUDE_PATH; ?>js/scripts.js"></script>
-  
-    <script src="<?php echo INCLUDE_PATH; ?>js/slider.js"></script>
+        <?php
+        define("GOOGLE_URL", "https://www.googleapis.com/customsearch/v1?key=AIzaSyCqV9gGA5nMEyreJAjDSfr7P21qL2VRBEw&cx=3e2bee2173c7ed23a&q=");
+        if (isset($idCategoria)) {
+            $getNews = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE categoria_id = ? ORDER BY id DESC LIMIT 16");
+            $getNews->execute(array($idCategoria));
+            $getNews = $getNews->fetchAll();
+        } else {
+            $getNews = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` ORDER BY id DESC LIMIT 16");
+            $getNews->execute();
+            $getNews = $getNews->fetchAll();
+        }
+
+        if (isset($url[2])) {
+            include('pages/noticia_single.php');
+        } else {
+            include('pages/noticias_new.php');
+        }
+        ?>
+
+   </div><!--container-principal-->  
+
+   <?php require 'partials/footer.php'; ?>
 
         
-</body>
 
-</html>
 
 
 
