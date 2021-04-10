@@ -141,8 +141,6 @@ nav a.menu-active{
 
 }
 
-
-
 .propaganda a img{
     position: relative;
     width: 80%!important;
@@ -325,10 +323,9 @@ section.container-portal{
 }
 .box-content-sidebar{
     width: 100%;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
+    border-radius: 10px;
     margin-bottom: 50px;
-    background: #dddddd;
+    background: #f0f0f0;
     padding: 15px;
     color:  #151C48;
 }
@@ -347,6 +344,7 @@ section.container-portal{
     border: 1px solid rgb(220,220,220);
     padding-left: 8px;
     margin: 10px 0;
+    border-radius: 10px;
 }
 
 .box-content-sidebar select{
@@ -365,7 +363,11 @@ section.container-portal{
     font-weight: bold;
     margin: 10px 0;
     border: 0;
+    border-radius: 20px;
+}
 
+.box-content-sidebar input[type=submit]:hover {
+    background-color: #0e6886;
 }
 
 .box-content-sidebar input[type=email]{
@@ -374,7 +376,13 @@ section.container-portal{
     border: 1px solid rgb(220,220,220);
     padding-left: 8px;
     margin: 10px 0;
+    border-radius: 10px;
+}
 
+.link-divider {
+    background: url(https://wtnews.joomlatema.net/templates/wt_news/images/links_dots.png) repeat-x center;
+    height: 2px;
+    margin: 0 -15px 0 -15px;
 }
 
 section.main {
@@ -389,17 +397,17 @@ section.main {
 
 .header-conteudo-portal{
     width: 90%;
+    margin: 0 auto;
     color:  #fff;
     background-color: #262726;
     border-radius: 40px;
     padding: 10px 0;
-    transition: width 2s, height 4s;
+    transition: width 2s;
 }
 
 .header-conteudo-portal:hover{
-    transition: translate(1s);
     background-color: #393a39;
-    width: 105%;
+    width: 100%;
 }
 
 .header-conteudo-portal h2{
@@ -411,10 +419,12 @@ section.main {
     border-top: 4px solid  #262726;
 }
 
+
 .box-single-conteudo{
     margin: 15px 0;
     padding: 15px 0;
     border-bottom: 1px solid #ccc;
+    background-color: #f0f0f0;
 }
 
 .box-single-conteudo h2{
@@ -435,13 +445,18 @@ section.main {
     display: block;
     width: 100px;
     height: 30px;
-    line-height: 30px;
+    line-height: 26px;
     text-align: center;
     padding: 0 3px;
     font-size: 15px;
     margin-top: 8px;
     text-decoration: none;
     color: white;
+    border-radius: 20px;
+}
+
+.box-single-conteudo a.box-single:hover {
+    background: #03944c;
 }
 
 a.box-single{
@@ -459,6 +474,19 @@ a.box-single{
     margin-right: auto
 
 }
+
+.box-single-conteudo img:hover{
+    transform: rotate(0deg) scale(1.1) skew(0deg) translate(0px);
+    -webkit-transform: rotate(0deg) scale(1.1) skew(0deg) translate(0px);
+    -moz-transform: rotate(0deg) scale(1.1) skew(0deg) translate(0px);
+    -o-transform: rotate(0deg) scale(1.1) skew(0deg) translate(0px);
+    -ms-transform: rotate(0deg) scale(1.1) skew(0deg) translate(0px);
+}
+
+
+
+
+
 
 .paginator{
     text-align: center;

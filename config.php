@@ -1,5 +1,7 @@
 <?php
 
+include 'hidden.php';
+
     session_start();
     date_default_timezone_set('America/Sao_Paulo');
    $autoload = function ($class) {
@@ -26,7 +28,7 @@
 
     //Contantes para painel de controle
     define('NOME_EMPRESA', 'Notícias Now Notícias');
-    
+
 
 
     //Funções do painel
