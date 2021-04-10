@@ -45,12 +45,8 @@ require 'partials/header.php';
 
 ?>
 
-
-
-
     <div class="container-principal">
         <?php
-        define("GOOGLE_URL", "https://www.googleapis.com/customsearch/v1?key=AIzaSyCqV9gGA5nMEyreJAjDSfr7P21qL2VRBEw&cx=3e2bee2173c7ed23a&q=");
         if (isset($idCategoria)) {
             $getNews = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE categoria_id = ? ORDER BY id DESC LIMIT 16");
             $getNews->execute(array($idCategoria));

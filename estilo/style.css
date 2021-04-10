@@ -388,10 +388,18 @@ section.main {
 }
 
 .header-conteudo-portal{
+    width: 90%;
     color:  #fff;
     background-color: #262726;
     border-radius: 40px;
     padding: 10px 0;
+    transition: width 2s, height 4s;
+}
+
+.header-conteudo-portal:hover{
+    transition: translate(1s);
+    background-color: #393a39;
+    width: 105%;
 }
 
 .header-conteudo-portal h2{

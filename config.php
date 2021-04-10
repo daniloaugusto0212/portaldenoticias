@@ -26,6 +26,7 @@
 
     //Contantes para painel de controle
     define('NOME_EMPRESA', 'Notícias Now Notícias');
+    define("GOOGLE_URL", "https://www.googleapis.com/customsearch/v1?key=AIzaSyCqV9gGA5nMEyreJAjDSfr7P21qL2VRBEw&cx=3e2bee2173c7ed23a&q=");
 
 
     //Funções do painel

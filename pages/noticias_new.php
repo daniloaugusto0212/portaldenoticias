@@ -12,6 +12,7 @@
             }
             ?>
         </div>
+        
         <div class="row ">
             <?php
             $handle = curl_init();
