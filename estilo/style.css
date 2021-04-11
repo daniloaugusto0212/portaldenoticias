@@ -90,7 +90,7 @@ img{
 
 header{
     background: #fff;
-    padding: 10px 0; 
+    padding: 10px 0;
      
 }
 
@@ -101,6 +101,28 @@ header .logo{
     padding-left: 20px;
     margin: 8px 0 12px; 
      
+}
+
+body > .container {
+    background-color: #ffff!important;
+    z-index: 1;
+    max-width: 1300px;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.background-news {
+    padding-top: 35px;
+    background-image: url('../images/bg-principal.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
 }
 
 .logo a{
@@ -179,6 +201,8 @@ Para arrumar scroll-x do IE e Edge.
 body{
     overflow-x: hidden;
 }
+
+
 
 
 section.erro-404 h2{        
@@ -332,6 +356,10 @@ section.container-portal{
 
 .header-noticias .box-content-sidebar{
     margin-bottom: 0px;
+}
+
+.container-principal {
+    padding: 0 15px;
 }
 
 .box-content-sidebar h3{
