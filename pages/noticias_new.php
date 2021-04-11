@@ -1,4 +1,3 @@
-
 <section class="main  text-center">
     <div class="container">
         <div class="header-conteudo-portal ">
@@ -63,7 +62,7 @@
                             <h2 class="h-15 header-title"><?= $resultado->items[$i]->htmlTitle; ?></h2>
                                 <div class="link-divider" style="clear:both;"></div>
                                 <br>
-                                <img class="h-25" src="<?= $resultado->items[$i]->pagemap->cse_image[0]->src; ?>" alt="Imagem capa da notícia">
+                                <img class="h-25" src="<?= $resultado->items[$i]->pagemap->cse_image[0]->src; ?>" alt="Imagem capa da notícia"><br>
                                 <div class="link-divider" style="clear:both;"></div>
                                 <p class=" h-35 align-middle pt-3"><?= $resultado->items[$i]->htmlSnippet; ?></p>
                                 <div class="link-divider" style="clear:both;"></div>
@@ -99,7 +98,7 @@
                     <div class="col-md-6 mt-4">
                         <div class="box-single-conteudo border container h-100 pb-0">
                             <h2 class="h-15 header-title"><?= $resultado->items[$i]->htmlTitle; ?></h2>
-                            <div class="link-divider" style="clear:both;"></div><br>
+                                <div class="link-divider" style="clear:both;"></div><br>
                                 <img class="h-25" src="<?= $resultado->items[$i]->pagemap->cse_image[0]->src; ?>" alt="Imagem capa da notícia"><br>
                                 <div class="link-divider" style="clear:both;"></div>
                                 <p class=" h-35 align-middle pt-3"><?= $resultado->items[$i]->htmlSnippet; ?></p>
@@ -174,10 +173,11 @@
                     <div class="col-md-3 mt-4">
                         <div class="box-single-conteudo border container h-100 pb-0">
                             <h2 class="h-15 header-title"><strong><?= substr(strip_tags($value['titulo']), 0, 45) . '...'  ?></strong></h2>
-                                <br>
-                                <img class="h-25" src="<?= INCLUDE_PATH_PAINEL ?>/uploads/<?= $value['capa'] ?>" alt="Imagem capa da notícia">
+                                <div class="link-divider" style="clear:both;"></div><br>
+                                <img class="h-25" src="<?= INCLUDE_PATH_PAINEL ?>/uploads/<?= $value['capa'] ?>" alt="Imagem capa da notícia"><br>
+                                <div class="link-divider" style="clear:both;"></div>
                                 <p class=" h-35 align-middle pt-5"><?= substr(strip_tags($value['conteudo']), 0, 130) . '...' ?></p>
-                        
+                                <div class="link-divider" style="clear:both;"></div>
                             <div class="h-15 "><a class="box-single" href="<?= INCLUDE_PATH ?>noticias/<?= $getCategory ?>/<?= $value['slug'] ?>" target="_blank">Leia mais</a></div>
                         </div><!--box-single-conteudo-->
                     </div>
