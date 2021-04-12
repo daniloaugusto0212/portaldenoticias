@@ -41,12 +41,12 @@ if ($url[0] == '') {
 $c = count($keywords);
 
 require 'partials/header.php';
-if (isset($_GET['page'])) {
-    $contPage = (int)$_GET['page'];
-    $indexStart = ($contPage - 1) * 16;
+$contPage = 1;
+if (isset($_POST['moreNews'])) {
+    $contPage += $_POST['quant'];
+    $limit = $contPage * 16;
 } else {
-    $contPage = 1;
-    $indexStart = 0;
+    $limit = 16;
 }
 
 ?>
@@ -54,7 +54,7 @@ if (isset($_GET['page'])) {
     <div class="container-principal">
         <?php
         if (isset($idCategoria)) {
-            $getNews = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE categoria_id = ? ORDER BY id DESC LIMIT $indexStart, 16");
+            $getNews = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE categoria_id = ? ORDER BY id DESC LIMIT $limit");
             $getNews->execute(array($idCategoria));
             $getNews = $getNews->fetchAll();
 
@@ -62,7 +62,7 @@ if (isset($_GET['page'])) {
             $totalNews->execute(array($idCategoria));
             $totalNews = $totalNews->rowCount();
         } else {
-            $getNews = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` ORDER BY id DESC LIMIT $indexStart,16");
+            $getNews = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` ORDER BY id DESC LIMIT $limit");
             $getNews->execute();
             $getNews = $getNews->fetchAll();
 
@@ -80,33 +80,13 @@ if (isset($_GET['page'])) {
         }
         ?>
 
-   </div><!--container-principal-->  
-   <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-        <li class="page-item">
-                <a class="page-link" href="<?= INCLUDE_PATH ?>?page=<?= $contPage - 1 ?>" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-            </li>
-            <?php
-            for ($i = 1; $i <= $totalPages; $i++) {
-                if ($contPage == $i) {
-                    $active = 'active';
-                } else {
-                    $active = '';
-                }
-                ?>
-                <li class="page-item <?= $active ?>"><a class="page-link" href="<?= INCLUDE_PATH ?>?page=<?= $i ?>"><?= $i ?></a></li>
-            <?php } ?>
-            <li class="page-item">
-                <a class="page-link" href="<?= INCLUDE_PATH ?>?page=<?= $contPage + 1 ?>" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+        <div class="pagination justify-content-center mb-5 mt-3" id="more">
+            <form action="<?= INCLUDE_PATH . $url[0] ?>#more" method="post">
+                <input type="submit" class="btn btn-block btn-primary" name="moreNews" value="Mostrar mais resultados">
+                <input type="hidden" name="quant" value="<?= $contPage ?>">
+            </form>
+        </div>
+   </div><!--container-principal--> 
    <?php require 'partials/footer.php'; ?>
 
         

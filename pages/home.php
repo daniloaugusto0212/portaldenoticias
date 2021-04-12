@@ -134,7 +134,7 @@
             <?php
             if (isset($_POST['google'])) {
                 echo '<h2><i class="fa fa-check" aria-hidden="true"></i> PRINCIPAIS NOTÍCIAS DO PORTAL</span></h2>';
-            } elseif (isset($url[0])) {
+            } elseif (!empty($url[0])) {
                 echo '<h2><i class="fa fa-check" aria-hidden="true"></i> Visualizando notícias em <strong>' . strtoupper($url[0]) . '</strong></h2>';
             } else {
                 echo '<h2><i class="fa fa-check" aria-hidden="true"></i> PRINCIPAIS NOTÍCIAS DO PORTAL</span></h2>';
@@ -169,6 +169,9 @@
                         </div><!--box-single-conteudo-->
                     </div>
                     <?php
+                }
+                if ($cont % 18 == 0) {
+                    echo '<div id="more"></div>';
                 }
                 ?>
                 <div class="col-md-3 mt-4">
