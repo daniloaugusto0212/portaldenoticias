@@ -170,8 +170,8 @@
                     </div>
                     <?php
                 }
-                if ($cont % 18 == 0) {
-                    echo '<div id="more"></div>';
+                if ($cont % 16 == 0) {
+                    echo '<div id="more' . $cont . '"></div>';
                 }
                 ?>
                 <div class="col-md-3 mt-4">

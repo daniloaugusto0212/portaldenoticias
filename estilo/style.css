@@ -590,6 +590,15 @@ img.card-img-top{
     max-height: 200px;
 }
 
+.scrollToTop{   
+    position:fixed;
+    bottom:25px; 
+    right:2%;
+    display:none;
+}
+
+
+
 @media screen and (max-width: 768px){
     section.noticia-single img{
         max-width:100%;
@@ -675,4 +684,5 @@ img.card-img-top{
         margin: 30px 0;
     }
 }
+
 
