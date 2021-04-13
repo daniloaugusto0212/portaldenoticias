@@ -1,8 +1,36 @@
+        <hr>
+        <footer class="nav">
+        <div class="center">            
+                <div class="logo left">
+                    <a href="<?= INCLUDE_PATH; ?>" >
+                        <img src="<?= INCLUDE_PATH; ?>images/logo-new.png" alt="Logomarca do portal de notícias - Notícias Now">
+                    </a>
+                </div><!--logo-->
+                <nav aria-label="Navegação" class="desktop right">            
+                    <ul>
+                        <li><a <?= $active ?> title="home" href="<?= INCLUDE_PATH; ?>">home</a></li>
+                        <?php
+                        $categorias = MySql::conectar()->prepare("SELECT * FROM `tb_site.categorias`
+                        ORDER BY order_id ASC");
+                        $categorias->execute();
+                        $categorias = $categorias->fetchAll();
+                        foreach ($categorias as $key => $value) {
+                            ?>
+                        <li><a <?php if (!empty(explode('/', @$_GET['url'])[1])) {
+                                        echo selecionadoMenu($value['nome']);
+                            } ?> title="Veja notícias sobre <?= $value['nome']; ?>" href="<?= INCLUDE_PATH; ?><?= $value['slug']; ?>"><?= $value['nome']; ?></a>
+                        </li>     
+                        <?php } ?>
+                    </ul>    
+                </nav>
+                <div class='clear'></div>
+            </div><!--center-->
+        </footer>
         <footer <?php if (isset($pagina404) && $pagina404 == true) {
             echo 'class="fixed"';
                 }?>>
             <div class="center">
-                <p>Todo os direitos reservados</p>
+                <p>Todo os direitos reservados | Desenvolvido por <a href="https://sitedan.com.br" target="_blank">SiteDan</a></p>
             </div><!--center-->
         </footer >
 
@@ -17,6 +45,7 @@
         <script src="<?= INCLUDE_PATH; ?>js/scripts.js"></script>
     
         <script src="<?= INCLUDE_PATH; ?>js/slider.js"></script>
+        <script src="<?= INCLUDE_PATH; ?>js/formularios.js"></script>
     </div><!--container-->
 </body>
 

@@ -3,7 +3,6 @@ include('../config.php');
 $hr = date(" H ");
 
 if ($hr >= 12 && $hr < 18) {
-
     $resp = "Boa tarde";
 } elseif ($hr >= 0 && $hr < 12) {
     $resp = "Bom dia";
@@ -127,13 +126,13 @@ $bodyContent = "
             </tr>
 	    </tbody>
 	</table>";
- 
+
 
 // Inicia a classe PHPMailer
 
 $mail = new PHPMailer();
 
- 
+
 
 // Define os dados do servidor e tipo de conexão
 
@@ -151,7 +150,7 @@ $mail->Password = PASSWORD_MAIL; // Senha do servidor SMTP (senha do email usado
 
 $mail ->CharSet = "UTF-8";
 
- 
+
 
 // Define o remetente
 
@@ -166,7 +165,7 @@ $mail->FromName = "Danilo Augusto"; // Seu nome
 $mail->ClearReplyTos();
 $mail->addReplyTo($email, $name);
 
- 
+
 
 // Define os destinatário(s)
 
@@ -180,7 +179,7 @@ $mail->AddAddress('contato@sitedan.com.br', 'SiteDan');
 
 //$mail->AddBCC('fulano@dominio.com.br', 'Fulano da Silva'); // Cópia Oculta
 
- 
+
 
 // Define os dados técnicos da Mensagem
 
@@ -190,7 +189,7 @@ $mail->IsHTML(true); // Define que o e-mail será enviado como HTML
 
 //$mail->CharSet = 'iso-8859-1'; // Charset da mensagem (opcional)
 
- 
+
 
 // Define a mensagem (Texto e Assunto)
 
@@ -200,17 +199,17 @@ $mail->Subject = "Receber Noticias"; // Assunto da mensagem
 
 
 /*
-$mail->Body = 'Este é o corpo da mensagem de teste, em HTML! 
+$mail->Body = 'Este é o corpo da mensagem de teste, em HTML!
 
  <IMG src="http://seudomínio.com.br/imagem.jpg" alt=":)"   class="wp-smiley"> ';
 
-$mail->AltBody = 'Este é o corpo da mensagem de teste, em Texto Plano! \r\n 
+$mail->AltBody = 'Este é o corpo da mensagem de teste, em Texto Plano! \r\n
 
 <IMG src="http://seudomínio.com.br/imagem.jpg" alt=":)"  class="wp-smiley"> ';
 */
- 
+
 $mail->Body = $bodyContent;
-$mail->AltBody =$bodyContent;
+$mail->AltBody = $bodyContent;
 
 
 // Define os anexos (opcional)
@@ -219,13 +218,13 @@ $mail->AltBody =$bodyContent;
 
 //$mail->AddAttachment("/home/kaique2/public_html/teste.tar", "teste.tar");  // Insere um anexo
 
- 
+
 
 if ($language) {
     // Envia o e-mail
     $enviado = $mail->Send();
 
-    
+
 
     // Limpa os destinatários e os anexos
 
@@ -233,7 +232,7 @@ if ($language) {
 
     $mail->ClearAttachments();
 
-    
+
 
     // // Exibe uma mensagem de resultado
 
@@ -245,11 +244,11 @@ if ($language) {
 
     // echo "Não foi possível enviar o e-mail.
 
-    
+
 
     // ";
 
-    // echo "Informações do erro: 
+    // echo "Informações do erro:
 
     // " . $mail->ErrorInfo;
 
@@ -260,14 +259,13 @@ if ($language) {
             alert('Mensagem enviada com sucesso');
             window.location = '../';
         </script>
-    <?php
-    }
-    else { ?>
+        <?php
+    } else { ?>
         <script language="javascript" type="text/javascript">
             alert('Campos incorretos, mensagem não enviada.');
             window.location = '../';
         </script>
-    <?php
+        <?php
     }
 } else {
     ?>

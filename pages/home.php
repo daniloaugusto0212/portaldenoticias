@@ -157,15 +157,14 @@
                             <h2 style="color:red">Ganhe dinheiro em casa fazendo bolos caseiros!</h2>                       
                             <p>Te apresento aqui o mais novo curso de bolos caseiros DA MARRARA! Os bolos caseiros estão super em alta e há uma grande procura na internet.</p>
                             <br>
-                            <a href="https://go.hotmart.com/Q25824879Q?src=noticias" target="_blank" rel="external">
+                            <a href="https://go.hotmart.com/R42589866K?src=noticias" target="_blank" rel="external">
                                 <img src="<?= INCLUDE_PATH ?>images/caseirinhos.jpeg" alt="Imagem da Marrara, curso de bolos caseiros">
                             </a>
                             <br>    
                             
                             <p><?= substr(strip_tags("Marrara Bortoloti, tem 32 anos, é mãe, esposa, confeiteira e produtora do Curso Bolos de Sucesso com mais de 20 mil alunas em todo o Brasil e no mundo!
-                            A Confeitaria é realmente surpreendente, sempre cheia de novidades e oportunidades… E se Você quer começar um negócio próprio ou simplesmente preparar bolos caseiros Incríveis, diferenciados e especiais, essa apostila é para você!
-                            Bolos em geral são realmente um sucesso de vendas durante o ano todo e estão presentes nas mais diversas ocasiões. Então imagina poder comprar um caseirinho incrível cheio de cobertura? Pronto! Aqui esta a sua chance de lucrar muito com a produção e venda dos queridinhos do momento, que são os bolos caseiros… e esse produto ainda é pouco divulgado no Brasil! Por isso não perca essa oportunidade incrível!"), 0, 400) . '...'; ?></p>
-                            <a class="box-single" href="https://go.hotmart.com/Q25824879Q?src=noticias" target="_blank">Leia mais</a>
+                            Esse Curso/Apostila foi criada para você empreender e aprender de maneira fácil, rápida e profissional a produzir e vender Bolos tipo Vulcão e Piscina! Nele você terá receitas de massas, recheios, calda para molhar o bolo, os processos de montagem e decoração, dicas de vendas e delivery, tudo passo a passo e muito mais. Temos o intuito de te guiar de forma realista para você realmente lucrar com este negócio de Bolos Vulcão e Piscina e mudar sua vida. Você ainda receberá BÔNUS de alto valor, sendo uma apostila com receitas de salgados, que vão deixar seus clientes surpresos com tanta variedade e também um guia com dicas valiosas para você realmente iniciar o seu próprio negócio e vender muito."), 0, 400) . '...'; ?></p>
+                            <a class="box-single" href="https://go.hotmart.com/R42589866K?src=noticias" target="_blank">Leia mais</a>
                         </div><!--box-single-conteudo-->
                     </div>
                     <?php
@@ -182,7 +181,7 @@
                         <div class="link-divider" style="clear:both;"></div>
                         <p class=" h-35 align-middle pt-5"><?= substr(strip_tags($value['conteudo']), 0, 130) . '...' ?></p>
                         <div class="link-divider" style="clear:both;"></div>
-                        <div class="h-15 "><a class="box-single" href="<?= INCLUDE_PATH ?>noticias/<?= $getCategory ?>/<?= $value['slug'] ?>" target="_blank">Leia mais</a></div>
+                        <div class="h-15 "><a class="box-single" href="<?= INCLUDE_PATH ?>noticias/<?= $getCategory ?>/<?= $value['slug'] ?>">Leia mais</a></div>
                     </div><!--box-single-conteudo-->
                 </div>
             <?php } ?>

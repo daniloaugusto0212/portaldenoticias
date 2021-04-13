@@ -42,8 +42,8 @@ $c = count($keywords);
 
 require 'partials/header.php';
 $contPage = 1;
-if (isset($_POST['moreNews'])) {
-    $contPage += $_POST['quant'];
+if (isset($_GET['moreNews'])) {
+    $contPage += $_GET['quant'];
     $limit = $contPage * 16;
 } else {
     $limit = 16;
@@ -84,7 +84,7 @@ if (isset($_POST['moreNews'])) {
         ?>
 
         <div class="pagination justify-content-center mb-5 mt-3" id="more">
-            <form action="<?= INCLUDE_PATH . $url[0] ?>#more<?= $limit ?>" method="post">
+            <form action="<?= INCLUDE_PATH . $url[0] ?>#more<?= $limit ?>" method="get">
                 <input type="submit" class="btn btn-block btn-primary" name="moreNews" value="Mostrar mais resultados">
                 <input type="hidden" name="quant" value="<?= $contPage ?>">
             </form>
