@@ -78,20 +78,8 @@ if (isset($_GET['moreNews'])) {
         } else {
             include('pages/home.php');
         }
-        if ($totalNews < $limit) {
-            echo 'Acabaram as Notícias :(';
-        } else {
-        ?>
-
-        <div class="pagination justify-content-center mb-5 mt-3" id="more">
-            <form action="<?= INCLUDE_PATH . $url[0] ?>#more<?= $limit ?>" method="get">
-                <input type="submit" class="btn btn-block btn-primary" name="moreNews" value="Mostrar mais resultados">
-                <input type="hidden" name="quant" value="<?= $contPage ?>">
-            </form>
-        </div>
-        <?php } ?>
-   </div><!--container-principal--> 
-   <?php require 'partials/footer.php'; ?>
+        
+    require 'partials/footer.php'; ?>
 
         
 

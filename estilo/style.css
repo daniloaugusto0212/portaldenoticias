@@ -111,6 +111,30 @@ body > .container {
     margin-top: 40px;
 }
 
+@media (max-width: 1260px) {
+    body > .container {
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 768px) {
+    body > .container {
+        max-width: 550px;
+    }
+}
+
+@media (max-width: 580px) {
+    body > .container {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 450px) {
+    body > .container {
+        max-width: 340px;
+    }
+}
+
 .background-news {
     padding-top: 35px;
     background-image: url('../images/bg-principal.jpg');
@@ -444,7 +468,7 @@ section.main {
     color:  #fff;
     background-color: #262726;
     border-radius: 40px;
-    padding: 10px 0;
+    padding: 10px;
     transition: width 2s;
 }
 

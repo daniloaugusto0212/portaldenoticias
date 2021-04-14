@@ -69,6 +69,6 @@
 		</div><!--box-single-conteudo-->
 		<div class="clear"></div>
 
-		<a class="btn" href="<?php echo INCLUDE_PATH ?>"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
+		<a href="#" class="btn btn-group-lg btn-primary" onClick="history.go(-1)"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
 	</div>
 </section>

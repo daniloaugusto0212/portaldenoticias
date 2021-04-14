@@ -10,6 +10,7 @@
         }
         ?>
     </div>
+    <br>
     
     <?php
     $handle = curl_init();
@@ -37,9 +38,9 @@
         ?>
         <div class="row">
             <?php
-            for ($i = 0; $i < $totalNews - 7; $i++) {
+            for ($i = 0; $i < $totalNews - 4; $i++) {
                 ?>
-                <div class="col-md-4 mt-4">
+                <div class="col-lg-4 col-md-6 mt-4">
                     <div class="box-single-conteudo border container h-100 pb-0">
                         <h2 class="h-15 header-title"><?= $resultado->items[$i]->htmlTitle; ?></h2>
                         <div class="link-divider" style="clear:both;"></div><br>
@@ -54,25 +55,6 @@
                 </div>
             <?php } ?>
         </div>
-        <div class="row">
-            <?php
-            for ($i = 3; $i < $totalNews - 4; $i++) {
-                ?>
-            <div class="col-md-4 mt-4">
-                <div class="box-single-conteudo border container h-100 pb-0">
-                    <h2 class="h-15 header-title"><?= $resultado->items[$i]->htmlTitle; ?></h2>
-                    <div class="link-divider" style="clear:both;"></div>
-                    <br>
-                    <img class="h-25" src="<?= $resultado->items[$i]->pagemap->cse_image[0]->src; ?>" alt="Imagem capa da notícia"><br>
-                    <div class="link-divider" style="clear:both;"></div>
-                    <p class=" h-35 align-middle pt-3"><?= $resultado->items[$i]->htmlSnippet; ?></p>
-                    <div class="link-divider" style="clear:both;"></div>
-                    <div class="h-15 "><a class="box-single" href="<?= $resultado->items[$i]->link; ?>" target="_blank">Leia mais</a></div>
-                </div><!--box-single-conteudo-->
-            </div>
-            <?php } ?>
-        </div>
-        <!-- /.row -->
 
         <div class="box-single-conteudo border mt-5 p-5">
             <h2 style="color:#ffcf00">CRIAÇÃO DE SITES E SISTEMAS WEB</h2>
@@ -95,7 +77,7 @@
                     $imgCapa = $resultado->items[$i]->pagemap->cse_image[0]->src;
                 }
                 ?>
-                <div class="col-md-6 mt-4">
+                <div class="col-lg-3 col-md-6 mt-4">
                     <div class="box-single-conteudo border container h-100 pb-0">
                         <h2 class="h-15 header-title"><?= $resultado->items[$i]->htmlTitle; ?></h2>
                         <div class="link-divider" style="clear:both;"></div><br>
@@ -129,7 +111,7 @@
         </div><!--box-single-conteudo-->
 
 
-        <?php } ?>
+    <?php } ?>
         <div class="header-conteudo-portal text-center mt-5">
             <?php
             if (isset($_POST['google'])) {
@@ -173,7 +155,7 @@
                     echo '<div id="more' . $cont . '"></div>';
                 }
                 ?>
-                <div class="col-md-3 mt-4">
+                <div class="col-lg-3 col-md-6 mt-4">
                     <div class="box-single-conteudo border container h-100 pb-0">
                         <h2 class="h-15 header-title"><strong><?= substr(strip_tags($value['titulo']), 0, 45) . '...'  ?></strong></h2>
                         <div class="link-divider" style="clear:both;"></div><br>
@@ -187,4 +169,19 @@
             <?php } ?>
         </div>
     </section><!--container-portal-->
+    <?php
+    if ($totalNews < $limit) {
+            echo '<div class="alert alert-dark text-center" role="alert">
+                    Não há mais notícias para exibir! Selecione outra categoria.
+                </div>';
+    } else {
+        ?>
+        <div class="pagination justify-content-center mb-5 mt-3" id="more">
+            <form action="<?= INCLUDE_PATH . $url[0] ?>#more<?= $limit ?>" method="get">
+                <input type="submit" class="btn btn-block btn-primary" name="moreNews" value="Mostrar mais resultados">
+                <input type="hidden" name="quant" value="<?= $contPage ?>">
+            </form>
+        </div>
+    <?php } ?>
+   </div><!--container-principal--> 
 
