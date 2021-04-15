@@ -33,8 +33,13 @@
     <meta property="og:url" content="<?= INCLUDE_PATH ?>" />
     <meta property="og:site_name" content="Notícias Now - O seu portal de notícias." />
     <meta property="article:modified_time" content="2020-09-01T00:04:51+00:00" />
-    <meta property="og:image" content="<?= INCLUDE_PATH; ?>images/logo-new.png" />
-    <meta name="twitter:card" content="summary_large_image" />     
+    <meta property="og:image" content="<?= INCLUDE_PATH; ?>images/bg-content.jpg" />
+    <meta name="twitter:card" content="summary" />   
+    <meta name="twitter: description" 
+    content = "Aqui você encontra as notícias mais quentes do momento."> 
+    <meta name="twitter: title" content = "Notícias Now - O seu portal de notícias.">
+    <meta name="twitter: image" content = "<?= INCLUDE_PATH; ?>images/bg-content.jpg">
+    <meta name="twitter: site" content = "@danilodansol">    
 
     <?php $urlTitle = isset($url[1]) ? 'Notícias sobre ' . $url[1] : 'O seu portal de notícias' ?>
 
