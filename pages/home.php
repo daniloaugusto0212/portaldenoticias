@@ -170,7 +170,7 @@
         </div>
     </section><!--container-portal-->
     <?php
-    if ($totalNews < $limit) {
+    if ($totalNewsDb < $limit) {
             echo '<div class="alert alert-dark text-center" role="alert">
                     Não há mais notícias para exibir! Selecione outra categoria.
                 </div>';

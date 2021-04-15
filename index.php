@@ -58,9 +58,9 @@ if (isset($_GET['moreNews'])) {
             $getNews->execute(array($idCategoria));
             $getNews = $getNews->fetchAll();
 
-            $totalNews = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE categoria_id = ?");
-            $totalNews->execute(array($idCategoria));
-            $totalNews = $totalNews->rowCount();
+            $totalNewsDb = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE categoria_id = ?");
+            $totalNewsDb->execute(array($idCategoria));
+            $totalNewsDb = $totalNewsDb->rowCount();
         } else {
             $getNews = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` ORDER BY id DESC LIMIT $limit");
             $getNews->execute();
@@ -68,18 +68,22 @@ if (isset($_GET['moreNews'])) {
 
             $totalNews = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias`");
             $totalNews->execute();
-            $totalNews = $totalNews->rowCount();
+            $totalNews = $totalNews->fetchAll();
+            $totalNewsDb = 0;
+            foreach ($totalNews as $key => $value) {
+                $totalNewsDb += 1;
+            }
         }
 
-        $totalPages = ceil($totalNews / 16);
+        $totalPages = ceil($totalNewsDb / 16);
 
         if (isset($url[2])) {
             include('pages/noticia_single.php');
         } else {
             include('pages/home.php');
         }
-        
-    require 'partials/footer.php'; ?>
+
+        require 'partials/footer.php'; ?>
 
         
 

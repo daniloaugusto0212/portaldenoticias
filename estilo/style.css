@@ -106,7 +106,7 @@ header .logo{
 body > .container {
     background-color: #ffff!important;
     z-index: 1;
-    max-width: 1300px;
+    max-width: 1180px;
     padding: 0;
     margin-top: 40px;
 }
