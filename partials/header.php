@@ -74,8 +74,8 @@
                         $categorias = $categorias->fetchAll();
                         foreach ($categorias as $key => $value) {
                             ?>
-                        <li><a <?php if (!empty(explode('/', @$_GET['url'])[1])) {
-                                        echo selecionadoMenu($value['nome']);
+                        <li><a <?php if (!empty(explode('/', @$_GET['url'])[0])) {
+                                        echo selecionadoMenu($value['slug']);
                             } ?> title="Veja notícias sobre <?= $value['nome']; ?>" href="<?= INCLUDE_PATH; ?><?= $value['slug']; ?>"><?= $value['nome']; ?></a>
                         </li>     
                         <?php } ?>
@@ -83,21 +83,23 @@
                 </nav>
                 <nav aria-label="Navegação" class="mobile right">
                     <div class="botao-menu-mobile"><em class="fas fa-bars"></em></div>
-                    <ul>
-                        <li><a <?= $active ?> title="home" href="<?= INCLUDE_PATH; ?>">Home</a></li>
-                        <?php
-                        $categorias = MySql::conectar()->prepare("SELECT * FROM `tb_site.categorias`
-                        ORDER BY order_id ASC");
-                        $categorias->execute();
-                        $categorias = $categorias->fetchAll();
-                        foreach ($categorias as $key => $value) {
-                            ?>
-                        <li><a <?php if (!empty(explode('/', @$_GET['url'])[1])) {
-                                        echo selecionadoMenu($value['nome']);
-                            } ?> title="Veja notícias sobre <?= $value['nome']; ?>" href="<?= INCLUDE_PATH; ?><?= $value['slug']; ?>"><?= $value['nome']; ?></a>
-                        </li>     
-                        <?php } ?>                
-                    </ul>
+                    <div class="container">
+                        <ul>
+                            <li><a <?= $active ?> title="home" href="<?= INCLUDE_PATH; ?>">Home</a></li>
+                            <?php
+                            $categorias = MySql::conectar()->prepare("SELECT * FROM `tb_site.categorias`
+                            ORDER BY order_id ASC");
+                            $categorias->execute();
+                            $categorias = $categorias->fetchAll();
+                            foreach ($categorias as $key => $value) {
+                                ?>
+                            <li><a <?php if (!empty(explode('/', @$_GET['url'])[0])) {
+                                            echo selecionadoMenu($value['slug']);
+                                } ?> title="Veja notícias sobre <?= $value['nome']; ?>" href="<?= INCLUDE_PATH; ?><?= $value['slug']; ?>"><?= $value['nome']; ?></a>
+                            </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
                 </nav>
                 <div class='clear'></div>
             </div><!--center-->

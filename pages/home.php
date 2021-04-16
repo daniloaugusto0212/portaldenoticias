@@ -163,7 +163,7 @@
                         <div class="link-divider" style="clear:both;"></div>
                         <p class=" h-35 align-middle pt-5"><?= substr(strip_tags($value['conteudo']), 0, 130) . '...' ?></p>
                         <div class="link-divider" style="clear:both;"></div>
-                        <div class="h-15 "><a class="box-single" href="<?= INCLUDE_PATH ?>noticias/<?= $getCategory ?>/<?= $value['slug'] ?>">Leia mais</a></div>
+                        <div class="h-15 "><a class="box-single" href="<?= INCLUDE_PATH ?><?= $getCategory ?>/<?= $value['slug'] ?>">Leia mais</a></div>
                     </div><!--box-single-conteudo-->
                 </div>
             <?php } ?>

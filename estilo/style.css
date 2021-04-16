@@ -698,13 +698,14 @@ img.card-img-top{
     }
 
     nav.mobile ul{
-        top: 55px;
+        top: 96px;
         z-index: 3;
         position: absolute;
         left: 0; 
         width: 100%;
         display: none;
         text-align: center;
+        padding: 0 10px;
     }
 
     nav.mobile li{

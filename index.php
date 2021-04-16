@@ -11,14 +11,20 @@ if ($url[0] == '') {
     //Estamos na Home
     $active = 'class="menu-active"';
     $keywords[0] = "noticias,portal de noticias, news, Últimas notícias do Brasil e do mundo, sobre política, economia, emprego, educação, saúde, meio ambiente, tecnologia, ciência, cultura e carros.";
-} elseif ($url[0] != '' && (!isset($url[1]))) {
+} elseif (isset($url[0])) {
     //Estamos em categorias
     $active = '';
     //Selecionar o id da categoria
     $infoCategoria = MySql::conectar()->prepare("SELECT id FROM `tb_site.categorias` WHERE slug = ? ");
     $infoCategoria->execute(array($url[0]));
     $infoCategoria = $infoCategoria->fetch();
-    $idCategoria = $infoCategoria['id'];
+    if (empty($infoCategoria)) {
+        include('partials/header.php');
+        echo '<br><br><br><br><br><br>';
+        die(include('pages/404.php'));
+    } else {
+        $idCategoria = $infoCategoria['id'];
+    }
 
     //Selecionar 10 t´titulos de notícias da categoria
     $infoTituloNoticia = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE categoria_id = ? LIMIT 10");
@@ -29,12 +35,12 @@ if ($url[0] == '') {
         $keywords[$i] = $value['titulo'];
         $i++;
     }
-} elseif (isset($url[2])) {
+} elseif (isset($url[1])) {
     $active = 'class="menu-active"';
 } else {
     //Estamos na notícia
     $infoNoticia = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE slug = ?");
-    $infoNoticia->execute(array($url[2]));
+    $infoNoticia->execute(array($url[1]));
     $infoNoticia = $infoNoticia->fetch();
     $keywords[0] = $infoNoticia['titulo'];
 }
@@ -77,8 +83,8 @@ if (isset($_GET['moreNews'])) {
 
         $totalPages = ceil($totalNewsDb / 16);
 
-        if (isset($url[2])) {
-            include('pages/noticia_single.php');
+        if (isset($url[1])) {
+            include('pages/noticia.php');
         } else {
             include('pages/home.php');
         }
