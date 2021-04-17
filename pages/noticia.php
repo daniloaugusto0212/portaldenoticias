@@ -64,7 +64,7 @@ if ($post->rowCount() == 0) {
 			Na hora de fazer a sua Declaração Anual, vale lembrar de algumas informações importantes!. O prazo para envio da Declaração Anual se inicia em Janeiro e vai até Maio. Ou seja, você tem cinco meses para declarar a renda obtida no ano anterior; 
 			O limite atual de faturamento para o MEI é de R$81 mil reais. O cálculo desse valor deve ser proporcional à quantidade de meses em que a sua empresa está aberta. Se você abriu seu CNPJ apenas no meio do ano, o seu limite de faturamento será menor; 
 			A multa por atraso pode chegar a até R$50. Faça a sua Declaração o quanto antes para evitar maiores preocupações futuramente. 
-			"), 0, 400) . '...'; ?></p>
+			"), 0, 300) . '...'; ?></p>
             <a class="box-single" href="https://abrircnpjmei.com.br/declaracao" target="_blank" rel="external">Leia mais</a>
         </div><!--box-single-conteudo-->
         <div class="clear"></div>

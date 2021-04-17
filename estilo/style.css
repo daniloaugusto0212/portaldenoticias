@@ -166,7 +166,7 @@ nav.desktop ul{
 nav.desktop li {
     font-weight: 700;
     font-size: 15px;
-    padding: 0 20px;
+    padding: 0 10px;
     text-transform: uppercase;
     display: inline-block;
     margin-top: 12px;
@@ -183,7 +183,7 @@ nav.desktop a:hover{
 }
 
 nav a.menu-active{
-    color:#0099CC;
+    color:#0099CC!important;
 
 }
 
@@ -634,6 +634,55 @@ img.card-img-top{
     bottom:25px; 
     right:2%;
     display:none;
+}
+
+@media (max-width:899px) {
+    nav.desktop{
+        display: none;
+    }
+    nav.mobile{
+        display: block;
+    }
+
+    .botao-menu-mobile{
+        font-size: 24px;
+        cursor: pointer;
+        color: #0099CC;
+    }
+
+    nav.mobile ul{
+        top: 96px;
+        z-index: 3;
+        position: absolute;
+        left: 0; 
+        width: 100%;
+        display: none;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    nav.mobile li{
+        font-weight: 300;
+        width: 100%;
+        display: block;
+        background: white;
+        border-bottom:1px solid #ccc;
+        font-size: 17px;
+        padding: 8px 0;
+    }
+
+    nav.mobile li a{
+        display: block;
+        color: #444;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    nav.mobile li a:hover{
+        color: #0099cc;
+    }
+
 }
 
 

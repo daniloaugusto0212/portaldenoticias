@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160703328-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160703328-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'UA-160703328-2');
-</script>
+    gtag('config', 'UA-160703328-2');
+    </script>
     <meta name="author" content="Danilo Augusto" >  
     <meta name="keywords" content="<?php
     for ($i = 0; $i < $c; $i++) {
@@ -41,7 +41,7 @@
     <meta name="twitter: image" content = "<?= INCLUDE_PATH; ?>images/bg-content.jpg">
     <meta name="twitter: site" content = "@danilodansol">    
 
-    <?php $urlTitle = isset($url[1]) ? 'Notícias sobre ' . $url[1] : 'O seu portal de notícias' ?>
+    <?php $urlTitle = isset($url[0]) ? 'Notícias sobre ' . $url[0] : 'O seu portal de notícias' ?>
 
     <title><?= $infoSite['titulo']; ?> | <?= ucfirst($urlTitle) ?></title>
     <link href="<?= INCLUDE_PATH; ?>estilo/css/all.css" rel="stylesheet"> <!--load all styles -->
@@ -66,7 +66,7 @@
                 </div><!--logo-->
                 <nav aria-label="Navegação" class="desktop right">            
                     <ul>
-                        <li><a <?= $active ?> title="home" href="<?= INCLUDE_PATH; ?>">home</a></li>
+                        <li><a <?= $active ?> title="Página inicial" href="<?= INCLUDE_PATH; ?>">home</a></li>
                         <?php
                         $categorias = MySql::conectar()->prepare("SELECT * FROM `tb_site.categorias`
                         ORDER BY order_id ASC");
@@ -76,16 +76,17 @@
                             ?>
                         <li><a <?php if (!empty(explode('/', @$_GET['url'])[0])) {
                                         echo selecionadoMenu($value['slug']);
-                            } ?> title="Veja notícias sobre <?= $value['nome']; ?>" href="<?= INCLUDE_PATH; ?><?= $value['slug']; ?>"><?= $value['nome']; ?></a>
+                            } ?> title="Notícias sobre <?= $value['nome']; ?>" href="<?= INCLUDE_PATH; ?><?= $value['slug']; ?>"><?= $value['nome']; ?></a>
                         </li>     
                         <?php } ?>
-                    </ul>    
+                    </ul>
+                    
                 </nav>
                 <nav aria-label="Navegação" class="mobile right">
-                    <div class="botao-menu-mobile"><em class="fas fa-bars"></em></div>
+                    <div class="botao-menu-mobile"><i class="fas fa-bars"></i></div>
                     <div class="container">
                         <ul>
-                            <li><a <?= $active ?> title="home" href="<?= INCLUDE_PATH; ?>">Home</a></li>
+                            <li><a <?= $active ?> title="Página inicial" href="<?= INCLUDE_PATH; ?>">Home</a></li>
                             <?php
                             $categorias = MySql::conectar()->prepare("SELECT * FROM `tb_site.categorias`
                             ORDER BY order_id ASC");
@@ -95,7 +96,7 @@
                                 ?>
                             <li><a <?php if (!empty(explode('/', @$_GET['url'])[0])) {
                                             echo selecionadoMenu($value['slug']);
-                                } ?> title="Veja notícias sobre <?= $value['nome']; ?>" href="<?= INCLUDE_PATH; ?><?= $value['slug']; ?>"><?= $value['nome']; ?></a>
+                                } ?> title="Notícias sobre <?= $value['nome']; ?>" href="<?= INCLUDE_PATH; ?><?= $value['slug']; ?>"><?= $value['nome']; ?></a>
                             </li>
                             <?php } ?>
                         </ul>

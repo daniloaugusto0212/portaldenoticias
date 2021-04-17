@@ -37,9 +37,7 @@
         <a href="#" class="scrollToTop"><i style="color: #262726;" class="fa fa-2x fa-arrow-circle-up"></i></a>
 
         <script data-ad-client="ca-pub-4705170629656649" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-        crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="<?= INCLUDE_PATH; ?>js/constants.js"></script>
         
         <script src="<?= INCLUDE_PATH; ?>js/scripts.js"></script>
