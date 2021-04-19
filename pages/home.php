@@ -18,8 +18,8 @@
     if (isset($_POST['google'])) {
         $search = urlencode($_POST['search']);
         $urlGoogle = GOOGLE_URL . $search;
-    } elseif (isset($url[1])) {
-        $urlGoogle = GOOGLE_URL . $url[1];
+    } elseif (isset($url[0])) {
+        $urlGoogle = GOOGLE_URL . $url[0];
     } else {
         $urlGoogle = GOOGLE_URL . $today;
     }
