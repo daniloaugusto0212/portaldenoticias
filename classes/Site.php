@@ -33,11 +33,16 @@ class Site
 
     public static function contador()
     {
+        
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $ipdetails = new ipdetails();
+        $ipdetails->ipdetails($ip);
+        $ipdetails->scan();
        //setcookie('visita','true',time() - 1 ); //Limpar cookie manualmente
-        if (!isset($_COOKIE['visita'])) {
+        if (!isset($_COOKIE['visita']) && $ipdetails->getCountryCode() == 'BR') {
             setcookie('visita', 'true', time() + (60 * 60 * 24 * 7)); //Cookie expira em 7 dias
             $sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.visitas` VALUES (null,?,?)");
-            $sql->execute(array($_SERVER['REMOTE_ADDR'],date('Y-m-d')));
+            $sql->execute(array($ip,date('Y-m-d')));
         }
     }
 }
