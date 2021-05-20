@@ -35,11 +35,11 @@ class Site
     {
         
         $ip = $_SERVER['REMOTE_ADDR'];
-        $ipdetails = new ipdetails();
-        $ipdetails->ipdetails($ip);
-        $ipdetails->scan();
+        // $ipdetails = new ipdetails();
+        // $ipdetails->ipdetails($ip);
+        // $ipdetails->scan();
        //setcookie('visita','true',time() - 1 ); //Limpar cookie manualmente
-        if (!isset($_COOKIE['visita']) && $ipdetails->getCountryCode() == 'BR') {
+        if (!isset($_COOKIE['visita'])) {
             setcookie('visita', 'true', time() + (60 * 60 * 24 * 7)); //Cookie expira em 7 dias
             $sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.visitas` VALUES (null,?,?)");
             $sql->execute(array($ip,date('Y-m-d')));

@@ -3,8 +3,8 @@
         <?php
         if (isset($_POST['google'])) {
             echo '<h2><i class="fa fa-check" aria-hidden="true"></i> Visualizando Pesquisa do <strong>Google</strong></h2>';
-        } elseif (isset($url[1])) {
-            echo '<h2><i class="fa fa-check" aria-hidden="true"></i> Visualizando notícias em <strong>' . $url[1] . '</strong></h2>';
+        } elseif (!empty($url[0])) {
+            echo '<h2><i class="fa fa-check" aria-hidden="true"></i> Visualizando notícias em <strong>' . strtoupper($url[0]) . '</strong></h2>';
         } else {
             echo '<h2><i class="fa fa-check" aria-hidden="true"></i> Visualizando notícias do <strong>Dia</strong></span></h2>';
         }
@@ -18,7 +18,7 @@
     if (isset($_POST['google'])) {
         $search = urlencode($_POST['search']);
         $urlGoogle = GOOGLE_URL . $search;
-    } elseif (isset($url[0])) {
+    } elseif (!empty($url[0])) {
         $urlGoogle = GOOGLE_URL . $url[0];
     } else {
         $urlGoogle = GOOGLE_URL . $today;

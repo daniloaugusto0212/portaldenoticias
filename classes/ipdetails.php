@@ -1,6 +1,6 @@
 <?php
 
-class ipdetails
+class Ipdetails
 {
     public $ip;
     protected $api = "http://www.geoplugin.net/xml.gp?ip=";
