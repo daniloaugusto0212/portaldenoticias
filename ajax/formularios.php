@@ -1,4 +1,5 @@
 <?php
+
 echo 'entrou';
 include('../config.php');
 $data = [];

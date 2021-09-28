@@ -10,7 +10,7 @@ if ($hr >= 12 && $hr < 18) {
     $resp = "Boa noite";
 }
 
-define('MAIL_SENDER', 'danilo@abrircnpjmei.com.br');
+define('MAIL_SENDER', 'noreply@dansol.com.br');
 $selectMail = Painel::select("pass_mail", "mail = ?", array(MAIL_SENDER));
 define('PASSWORD_MAIL', $selectMail['password']);
 define('SERVER_MAIL', 'smtp.hostinger.com.br');
